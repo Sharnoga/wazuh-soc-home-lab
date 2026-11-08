@@ -23,7 +23,7 @@ flowchart LR
 | Victim | Windows 11 Enterprise Evaluation, 6 GB RAM / 4 vCPU, Sysmon + Wazuh agent |
 | Attacker | Kali Linux 2026.3 (prebuilt VirtualBox image), 4 GB RAM / 2 vCPU |
 
-> 📸 *Screenshot: VirtualBox Manager with all three VMs*
+![vms](screenshots/vms.png)
 
 ---
 
