@@ -162,23 +162,7 @@ A single correct login with no prior failures, run outside the 4-minute window, 
 
 ---
 
-## Troubleshooting Log
 
-Real problems I hit during the build and how I solved them:
-
-| Problem | Cause | Fix |
-|---|---|---|
-| VirtualBox installer: "Invalid installation directory" | VirtualBox 7 only installs to protected paths | Installed to the default Program Files path |
-| Network Manager missing in VirtualBox 7.2 | Hidden in *Basic* UI mode | Switched to *Expert* mode |
-| Ubuntu ISO torrent at ~49 KB/s | Few peers / possible ISP throttling | Downloaded directly from releases.ubuntu.com |
-| Ubuntu installer froze on the profile screen | Installer/display hang | Reset the VM and reran the installer |
-| No copy-paste into Ubuntu Server console | No desktop, so no shared clipboard | Managed the server over SSH via port forwarding |
-| Install script printed to screen instead of saving | Typo in `curl -sO` (wrong character for capital O) | Re-ran the download, verified with `ls` |
-| Dashboard `ERR_TIMED_OUT` right after install | Services still starting | Checked service status and listening ports; dashboard came up |
-| Windows 11 stuck on a blank blurry screen after install | First-boot setup hang in the VM | Got past it and completed setup |
-| `zsh: event not found` when building the wordlist | `!` inside double quotes triggers zsh history expansion | Used single quotes |
-
----
 
 ## Lessons Learned
 
