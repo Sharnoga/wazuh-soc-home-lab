@@ -51,7 +51,7 @@ curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
 sudo bash ./wazuh-install.sh -a
 ```
 
-![dashboard](dashboard.png)
+![dashboard](screenshots/dashboard.png)
 
 ---
 
@@ -77,7 +77,7 @@ The **Wazuh agent** was enrolled from the dashboard. Then I added the Sysmon cha
 
 **First triage:** the first alerts were 57 hits of rule 92217 *"Executable dropped in Windows root folder"* (level 6). I traced them to my own setup activity (Guest Additions, the agent installer, and Windows updates) and classified them as **benign / false positives**.
 
-> 📸 *Screenshot: agent active + Sysmon events in Threat Hunting*
+![agent sysmon](screenshots/agent-sysmon.png)
 
 ---
 
@@ -99,7 +99,7 @@ nxc rdp 192.168.50.5 -u testuser -p pass.txt
 ```
 Result: 9 × `STATUS_LOGON_FAILURE`, then `[+] testuser:Summer2026! (Pwn3d!)`.
 
-> 📸 *Screenshot: Kali NetExec output*
+![kali attack](screenshots/kali-attack.png)
 
 ### What Wazuh detected (default rules)
 
@@ -109,8 +109,8 @@ Result: 9 × `STATUS_LOGON_FAILURE`, then `[+] testuser:Summer2026! (Pwn3d!)`.
 | 11:05:50.211 | Failure burst correlated | 60204 – Multiple Windows Logon Failures | 10 |
 | **11:05:50.232** | **Successful logon (Event ID 4624) from 192.168.50.6** | **92652 – Successful Remote Logon (NTLM)** | **6** |
 
-> 📸 *Screenshot: 4625 burst in Threat Hunting*
-> 📸 *Screenshot: the 4624 success event*
+![failed logons](screenshots/failed-logons.png)
+![success logon](screenshots/rule-100100.png)
 
 ### The detection gap
 
@@ -152,14 +152,12 @@ Re-ran the attack, and the rule fired on the first attempt:
 
 > **Level 12 – Brute force SUCCEEDED: testuser logged on from 192.168.50.6 after multiple failures**
 
-> 📸 *Screenshot: rule 100100 alert*
+![rule 100100](screenshots/success-logon.png)
 
 ### Validation (false-positive test)
 
 <!-- TODO: fill in after testing -->
 A single correct login with no prior failures, run outside the 4-minute window, should **not** trigger rule 100100.
-
-> 📸 *Screenshot: normal login, no 100100 alert*
 
 ---
 
