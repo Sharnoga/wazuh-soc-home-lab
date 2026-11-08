@@ -156,7 +156,8 @@ Re-ran the attack, and the rule fired on the first attempt:
 
 ### Validation (false-positive test)
 
-<!-- TODO: fill in after testing -->
+Logged in once with the correct password at 11:40, outside the 4-minute window and with no failures before it. Wazuh recorded the logon (rule 92652, level 6) but rule 100100 did **not** fire, confirming the rule only triggers when a success follows a brute force.
+
 A single correct login with no prior failures, run outside the 4-minute window, should **not** trigger rule 100100.
 
 ---
